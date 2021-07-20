@@ -1,0 +1,118 @@
+
+/* .header{
+    background: url(../images/header_view.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+      
+} */
+
+.header_bar{
+    height: 84px;
+    display: flex;
+    margin: 0 3.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_logo{
+    font-size: 40px;
+    text-decoration: none;
+    color: #e44b1e;
+    font-family: 'Yomogi', cursive;
+}
+
+.header_sign_btn{
+    color: #fff;
+    background-color: #e50914;
+    line-height: normal;
+    padding: 7px 0;
+    font-weight: 400;
+    font-size: 1rem;
+    border-radius: 3px;
+    text-decoration: none;
+    text-align: center;
+    width: 91px;
+}
+
+.header_sign_btn:hover{
+    color: #fff;
+}
+
+/* reg start */
+
+.reg_content{
+    margin-top: calc(100% - 90%) !important;
+}
+
+
+.reg_form input[name="avatar"]{
+    width: 75%;
+    margin-top: 1rem;
+}
+
+.reg_form input{
+    border-color: transparent;
+    border-bottom: 1px solid rgb(70, 70, 70);
+    outline:none;
+    /* font-family: 'Yomogi', cursive; */
+}
+
+.reg_form input[name="submit"]:hover{
+    background-color: rgb(70, 70, 70);
+    color: white;
+}
+
+
+.register_text{
+    background-image: url(../images/header_view.jpg);
+    object-fit: cover;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    font-size: 24px;
+    font-family: 'Yomogi', cursive;
+    color: rgb(70, 70, 70);
+}
+
+.register_text p {
+    margin-top: calc(100% - 73%);
+}
+
+.reg_title{
+    font-size: 30px;
+    text-align: left;
+    margin: 0 auto;
+    width: 75%;
+    font-family: 'Yomogi', cursive;
+    color: rgb(70, 70, 70);
+}
+
+footer{
+    height: 100px;
+    width: 100%;
+    background-color: rgb(70, 70, 70);
+    /* margin-top: calc(100vh - 37.08%); */
+}
+
+/* reg end */
+
+.log_content{
+    margin-top: calc(100% - 85%) !important;
+    align-items: center;
+}
+
+.login_text p{
+    margin-top: calc(100% - 91%);
+    color: #fff;
+    font-weight: 900;
+}
+.login_text h3{
+    color: #fff;
+    font-weight: 900;
+    margin-bottom: 10%;
+}
+.login_text{
+    background-image: url(../images/login_view.jpg);
+    background-position: left;
+}
