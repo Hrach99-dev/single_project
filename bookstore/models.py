@@ -10,7 +10,7 @@ from PIL import Image
 class UserProfileManager(BaseUserManager):
     """Manager for user profiles"""
 
-    def create_user(self, name, email, password=None, avatar=None):
+    def create_user(self, email, name, password=None):
         """Create a new user profile"""
 
         if not email:
@@ -20,18 +20,18 @@ class UserProfileManager(BaseUserManager):
         user = self.model(email=email, name=name)
 
         user.set_password(password)
-        user.avatar = avatar
         user.save(using=self._db)
 
         return user
     
-    def create_superuser(self, name, email, password, avatar=None):
+    def create_superuser(self, email, name, password):
         """Create ans save a new superuser with given details"""
         user = self.create_user(email, name, password)
-        
+        user.last_name = ''
+        user.profile_image = None
+        user.is_admin = True
         user.is_superuser = True
         user.is_staff = True
-        user.avatar = avatar
         user.save(using=self._db)
 
         return user
@@ -42,11 +42,16 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     """Database model for users in the system"""
     
    
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=64)
+    last_name = models.CharField(max_length=64)
     email = models.EmailField(max_length=255, unique=True)
+    date_joined = models.DateTimeField(verbose_name="date joines", auto_now_add=True)
+    last_login = models.DateTimeField(verbose_name="last login", auto_now=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    avatar = models.ImageField(upload_to='static/images/users/'+ datetime.datetime.now().strftime('%Y-%m-%d'))
+    is_admin = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    profile_image = models.ImageField(upload_to='static/images/users/' + datetime.datetime.now().strftime('%Y-%m-%d'))
 
     objects = UserProfileManager()
 

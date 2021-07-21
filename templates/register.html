@@ -13,13 +13,13 @@
             <h3 class="reg_title">Registration Form</h3>
             <form class="reg_form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{form.first_name}} <br>
+                
+                {{form.name}} <br>
                 {{form.last_name}} <br>
-                {{form.username}} <br>
                 {{form.email}} <br>
                 {{form.password1}} <br>
                 {{form.password2}} <br>
-                {{form.avatar}} <br>
+                
                 <input type="submit" name="submit" value="Registration" class="w-50 mt-3 btn btn-outline-transparent">
             </form>
             {% if messages %}
@@ -32,6 +32,14 @@
             <p>“Books have the power to transport us to new worlds and different times, but they can also take us back to the important moments in our own lives.”</p>
             <h3> ~MARK TWAIN</h3>
         </div>
+        
+    </div>
+    <div class="row text-center">
+        <div class="col-6">
+            <p>{{form.email.errors}}</p>
+            <p>{{form.password2.errors}}</p>
+        </div>
+        <div class="col-6"></div>
         
     </div>
     

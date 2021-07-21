@@ -2,6 +2,16 @@
 
 {% block title %} Home Page {% endblock %}
 
+
+{% if user.is_authenticated %}
+
+    {% block sign %}
+        <a class="header_sign_btn" href="{% url 'logout' %}">Logout</a>
+    {% endblock %}
+
+{% endif %}
+
 {% block content %}
-    <p>Home</p>
+    
+    
 {% endblock %}

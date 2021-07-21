@@ -47,9 +47,10 @@
 }
 
 
-.reg_form input[name="avatar"]{
+.reg_form input[name="profile_image"]{
     width: 75%;
     margin-top: 1rem;
+    border: none;
 }
 
 .reg_form input{
@@ -76,7 +77,7 @@
 }
 
 .register_text p {
-    margin-top: calc(100% - 73%);
+    margin-top: calc(100% - 81%);
 }
 
 .reg_title{
