@@ -44,6 +44,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
    
     name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
+    biography = models.TextField(default='')
     email = models.EmailField(max_length=255, unique=True)
     date_joined = models.DateTimeField(verbose_name="date joines", auto_now_add=True)
     last_login = models.DateTimeField(verbose_name="last login", auto_now=True)
@@ -67,3 +68,21 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     def __str__(self) -> str:
         """Return email of user"""
         return self.email
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=40)
+
+class Book(models.Model):
+   name = models.CharField(max_length=300)
+   pages = models.IntegerField()
+   price = models.DecimalField(max_digits=10, decimal_places=2)
+   authors = models.ManyToManyField(UserProfile)
+   categories = models.ManyToManyField(Category)
+   pubdate = models.DateField()
+   image = models.ImageField(upload_to='static/images/books/' + datetime.datetime.now().strftime('%Y-%m-%d'))
+
+class Store(models.Model):
+   name = models.CharField(max_length=300)
+   books = models.ManyToManyField(Book)
+
