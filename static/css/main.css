@@ -8,12 +8,29 @@
       
 } */
 
+
+.customClassForText{
+    font-family: 'Yomogi', cursive;
+}
+
 .header_bar{
     height: 84px;
-    display: flex;
+    
+    background-color: #212529;
+}
+.navbar{
     margin: 0 3.5rem;
-    justify-content: space-between;
-    align-items: center;
+}
+
+.navbar-expand-lg .navbar-nav{
+    font-family: 'Yomogi', cursive;
+    padding-top: 7px;
+    font-size: 20px;
+    margin-left: 40px;
+}
+.nav-link{
+    color: #fff !important;
+    font-weight: 700;
 }
 
 .header_logo{
@@ -40,6 +57,35 @@
     color: #fff;
 }
 
+#navbarColor01{
+    line-height: 0;
+    font-size: 20px;
+}
+.header_sign_btn.for_home{
+    padding: 10px 0;
+    height: 40px;
+    margin-top: 10px;
+}
+.user_profile_image{
+    margin-right: 10px;
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+}
+.topbar-user_container{
+    margin-top: 20px;
+    margin-right: 5px;
+}
+.topbar-user_name{
+    line-height: 0;
+    text-decoration: none;
+    font-family: 'Yomogi', cursive;
+    font-size: 20px;
+    color: #fff;
+}
+.topbar-user_name p:first-child{
+    margin-bottom: 20px;
+}
 /* reg start */
 
 .reg_content{
@@ -117,3 +163,110 @@ footer{
     background-image: url(../images/login_view.jpg);
     background-position: left;
 }
+
+/* user profile start */
+
+.profile-container{
+    margin-top: 100px;
+
+}
+.nav_forProfile{
+    background-color: #212529;
+    height: 280px;
+    font-family: 'Yomogi', cursive;
+}
+.nav-block.forProfile{
+    padding-left: 1rem;
+}
+.nav-block.forProfile li{
+    list-style-type: none;
+    font-size: 20px;
+}
+
+.card_size {
+    white-space: nowrap;
+    overflow: hidden; 
+    padding: 5px; 
+    text-overflow: ellipsis; 
+}
+.card.forProfile{
+    width: 100% !important;
+}
+
+/* user profile end */
+
+
+/* user update start */
+
+.updatePage-container{
+    margin-top: 100px
+}
+
+.reg_form.for_update{
+    width: 75%;
+    margin: 0 auto;
+}
+.user_update_textarea{
+    border: none;
+    overflow: auto;
+    outline: none;
+    resize: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #212529;
+    
+}
+.submit_for_updateForm{
+    margin-left: calc((100% - 75%) / 2);
+}
+
+.update-col-2{
+    background-image: url(../images/quote_background/quote_view.jpeg);
+    background-position: bottom;
+    font-size: 24px;
+    font-family: 'Yomogi', cursive;
+    color: #fff;
+    text-align: center;
+}
+.update-col-2 p{
+    margin-top: calc(100% - 70%);
+}
+
+/* user update end */
+
+/* news start */
+.news_title{
+    
+    font-size: 30px;
+    text-align: center;
+    margin-top: 30px;
+}
+.news_image{
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+.news_text{
+    margin-top: 20px;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+.news_author{
+    font-style: italic;
+    font-size: 16px;
+}
+/* news end */
+
+
+
+/* news add start */
+.reg_form.for_update.for_news input[name=image]{
+    border: none;
+    margin-top: 10px;
+}
+.update-col-2.forNews p{
+    margin-top: calc(100% - 80%)
+}
+/* news add end */

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block title %} {{object.title}} {% endblock %}
+
+{% load static %}
+{% if user.is_authenticated %}
+
+    {% block sign %}
+        <a class="header_sign_btn for_home" href="{% url 'logout' %}">Logout</a>
+    {% endblock %}
+
+{% endif %}
+
+
+{% block content %}
+    <div class="container">
+        <div style="margin: 0 auto; margin-top: 200px;" class="row w-50 border">
+            <div class="col p-5">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Delete Post <span class="news_author"> by {{user_name}} {{user_lastname}} </span></legend>
+                        <h3>Are you sure you want to delete the post "{{ object.title }}"</h3>
+                    </fieldset>
+                    <div class="form-group mt-3">
+                        <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+                        <a class="btn btn-outline-secondary" href="{% url 'news_detail' object.id %}">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}

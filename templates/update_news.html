@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} Update News {% endblock %}
+
+{% load static %}
+{% if user.is_authenticated %}
+
+    {% block sign %}
+        <a class="header_sign_btn for_home" href="{% url 'logout' %}">Logout</a>
+    {% endblock %}
+
+{% endif %}
+
+{% block content %}
+    <div class="container updatePage-container">
+        <div class="row">
+            <div class="col-2 nav_forProfile">
+                <ul class="nav-block forProfile">
+                    
+                    <li class="nav-list"><a href="{% url 'profile' %}" class="nav-link">Profile</a></li>
+                    <li class="nav-list"><a href="#" class="nav-link">Books</a></li>
+                    <li class="nav-list"><a href="{% url 'add_news' %}" class="nav-link">Add News</a></li>
+                    <li class="nav-list"><a href="#" class="nav-link">Your Cart</a></li>
+                    <li class="nav-list"><a href="{% url 'user_update' %}" class="nav-link">Update Account</a></li>
+                    <li class="nav-list"><a href="{% url 'delete_account' user.pk %}" class="nav-link">Delete Account</a></li>
+                </ul>
+                
+            </div>
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-6">
+                        <h1 class="text-center">Create News</h1>
+                        <form class="reg_form for_update for_news" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            {{form.title}} <br>
+                            {{form.text}} <br>
+                            {{form.image}} <br>
+                            
+                            
+                            <input type="submit" name="submit" value="Update" class="w-75 mt-3 btn btn-outline-transparent submit_for_updateForm">
+                        </form>
+                    </div>
+                    <div class="col-6 bg-danger update-col-2">
+                        <p>“{{user.quote}}”</p>
+                        <h3> ~{{user.name}} {{user.last_name}}</h3>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+        
+    
+    
+{% endblock %}

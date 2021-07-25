@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} About Us {% endblock %}
+
+
+{% if user.is_authenticated %}
+
+    {% block sign %}
+        <a class="header_sign_btn for_home" href="{% url 'logout' %}">Logout</a>
+    {% endblock %}
+
+{% endif %}
+
+{% block content %}
+    <h1>About us</h1>
+    
+{% endblock %}

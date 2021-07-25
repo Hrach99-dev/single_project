@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %} Profile Page {% endblock %}
+
+{% load static %}
+{% if user.is_authenticated %}
+
+    {% block sign %}
+        <a class="header_sign_btn for_home" href="{% url 'logout' %}">Logout</a>
+    {% endblock %}
+
+{% endif %}
+
+{% block content %}
+    <div class="container profile-container">
+        <div class="row">
+            <div class="col-2 nav_forProfile">
+                <ul class="nav-block forProfile">
+                    <li class="nav-list"><a href="{% url 'profile' %}" class="nav-link">Profile</a></li>
+                    <li class="nav-list"><a href="#" class="nav-link">Books</a></li>
+                    <li class="nav-list"><a href="{% url 'add_news' %}" class="nav-link">Add News</a></li>
+                    <li class="nav-list"><a href="#" class="nav-link">Your Cart</a></li>
+                    <li class="nav-list"><a href="{% url 'user_update' %}" class="nav-link">Update Account</a></li>
+                    <li class="nav-list"><a href="{% url 'delete_account' user.pk%}" class="nav-link">Delete Account</a></li>
+                </ul>
+                
+            </div>
+            <div class="col-10">
+                <div class="row">
+                    {% for i in news %}
+                        <div class="col-4 mb-5">
+                            <div class="card forProfile" style="width: 18rem;">
+                                <img class="card-img-top" src="{{i.image.url}}" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">{{i.title}}</h5>
+                                <p class="card-text card_size">{{i.text}}</p>
+                                <a href="{% url 'news_detail' i.id %}" class="btn btn-dark">Show more...</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 150px;">
+            <div class="col">
+                {% if is_paginated %}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            {% for page_num in paginator.page_range %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+        
+    
+    
+{% endblock %}

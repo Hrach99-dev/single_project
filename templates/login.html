@@ -3,37 +3,39 @@
 {% block title %} Login Page {% endblock %}
 
 {% block sign %}
-    <a class="header_sign_btn" href="{% url 'register' %}">Sign Up</a>
+    <a class="header_sign_btn for_home" href="{% url 'register' %}">Sign Up</a>
 {% endblock %}
 
 {% block content %}
-    <div class="row text-center log_content">
-        <div class="col-6">
-            <h3 class="reg_title">Login Form</h3>
-            <form class="reg_form" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{form.username}} <br>
-                {{form.password}} <br>
-                <input type="submit" name="submit" value="Login" class="w-25 mt-3 btn btn-outline-transparent">
-            </form>
-            {% if messages %}
-                {% for message in messages %}
-                    <p>{{message}}</p>
-                {% endfor %}
-            {% endif %}
+    <div class="container">
+        <div class="row text-center log_content">
+            <div class="col-6">
+                <h3 class="reg_title">Login Form</h3>
+                <form class="reg_form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.username}} <br>
+                    {{form.password}} <br>
+                    <input type="submit" name="submit" value="Login" class="w-25 mt-3 btn btn-outline-transparent">
+                </form>
+                <!-- {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %} -->
+            </div>
+            <div class="col-6 register_text login_text">
+                <p>“If you don’t like to read, you haven’t found the right book.”</p>
+                <h3> ~J.K. Rowling</h3>
+            </div>
+            
         </div>
-        <div class="col-6 register_text login_text">
-            <p>“If you don’t like to read, you haven’t found the right book.”</p>
-            <h3> ~J.K. Rowling</h3>
+        <div class="row text-center">
+            <div class="col-6">
+                <p>{{form.error_messages.invalid_login}}</p>
+            </div>
+            <div class="col-6"></div>
+            
         </div>
-        
-    </div>
-    <div class="row text-center">
-        <div class="col-6">
-            <p>{{form.errors}}</p>
-        </div>
-        <div class="col-6"></div>
-        
     </div>
     
 {% endblock %}

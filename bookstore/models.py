@@ -5,6 +5,11 @@ from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
 from django.conf import settings
 from PIL import Image
+from django.urls import reverse
+
+
+
+
 
 
 class UserProfileManager(BaseUserManager):
@@ -36,8 +41,6 @@ class UserProfileManager(BaseUserManager):
 
         return user
     
-        
-
 class UserProfile(AbstractBaseUser, PermissionsMixin):
     """Database model for users in the system"""
     
@@ -46,13 +49,14 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=64)
     biography = models.TextField(default='')
     email = models.EmailField(max_length=255, unique=True)
+    quote = models.TextField(default='')
     date_joined = models.DateTimeField(verbose_name="date joines", auto_now_add=True)
     last_login = models.DateTimeField(verbose_name="last login", auto_now=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    profile_image = models.ImageField(upload_to='static/images/users/' + datetime.datetime.now().strftime('%Y-%m-%d'))
+    profile_image = models.ImageField(upload_to='static/images/users/' + datetime.datetime.now().strftime('%Y-%m-%d'), default='default_user.png')
 
     objects = UserProfileManager()
 
@@ -86,3 +90,13 @@ class Store(models.Model):
    name = models.CharField(max_length=300)
    books = models.ManyToManyField(Book)
 
+class News(models.Model):
+    title = models.CharField(max_length=255)
+    text = models.TextField()
+    author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    date_add = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='static/images/news/' + datetime.datetime.now().strftime('%Y-%m-%d'))
+
+
+    def get_absolute_url(self):
+        return reverse('news_detail', kwargs={'pk': self.pk})

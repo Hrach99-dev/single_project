@@ -135,4 +135,4 @@ AUTH_USER_MODEL = 'bookstore.UserProfile'
 # Login URL
 LOGIN_URL = '/login'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'profile'

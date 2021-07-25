@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} {{object.title}} {% endblock %}
+
+{% load static %}
+{% if user.is_authenticated %}
+
+    {% block sign %}
+        <a class="header_sign_btn for_home" href="{% url 'logout' %}">Logout</a>
+    {% endblock %}
+
+{% endif %}
+
+{% block content %}    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <p class="news_title">{{object.title}} <span class="news_author"> by {{user_name}} {{user_lastname}} </span></p>
+                <img class="news_image" src="{{object.image.url}}" alt="News img">
+                <p class="news_text">{{object.text}}</p>
+                <p class="news_date">{{object.date_add}}</p>
+                {% if object.author == user %}
+                    
+                    <a href="{% url 'news_delete' object.id %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'news_update' object.id %}" class="btn btn-dark">Update</a>
+                {% endif %}
+            </div>
+            <div class="col-2"></div>
+             
+        </div>
+    </div>
+    
+    
+{% endblock %}
